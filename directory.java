@@ -28,7 +28,7 @@ public class directory {
     dNode dir[] = new dNode[MAX_INPUT];
 
     public void initialize() throws FileNotFoundException {
-        File input = new File(""); // reads files ****** UPDATE WITH CORRECT PATH FOR YOU
+        File input = new File("C:\\Users\\Public\\Documents\\src\\com\\company\\test1.txt"); // reads files ****** UPDATE WITH CORRECT PATH FOR YOU
         Scanner sc = new Scanner(input);
         int index = 0;
 
@@ -40,8 +40,14 @@ public class directory {
             dNode d = newNode(sc.nextLine());
             dir[index] = d; // filling up the directory array with dnodes
             index++;
+            System.out.println("Currently executing: " + d.command);
+            System.out.println("Current inode Array:");
+            printInodes();
+            System.out.println();
         }
         //printData(); // prints the directory
+        System.out.println();
+        System.out.println("Final inode Array:");
         printInodes(); // prints the final dnode status
         bitm.printBitmap(); // prints the final bitmap status
     }
@@ -97,8 +103,6 @@ public class directory {
 
     // Method to print all of the inodes in the array
     void printInodes(){
-        System.out.println();
-        System.out.println("Final inode Array:");
         for (int i = 0; i < MAX_INPUT; i++) {
             if(!(inodeArr[i] == null))
                 System.out.println("inode[" + i + "]= " + inodeArr[i]);
@@ -160,7 +164,6 @@ class inode {
         for(int i = bitMapAddress; i < bitMapAddress+10; i++){
             bm.bitMapArray[i] = 0;
         }
-
     }
 
     // adds bits to the bitmap array
